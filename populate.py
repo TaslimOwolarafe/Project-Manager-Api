@@ -12,6 +12,8 @@ from faker import Faker
 from django.contrib.auth.models import User
 from PIL import Image
 import os
+
+from pathlib import Path
 from random import randint
 
 # Create a Faker instance
@@ -59,6 +61,10 @@ def generate_task_data(project):
 for _ in range(10):
     project_data = generate_project_data()
     project = Project.objects.create(**project_data)  # Create project object first
+    path = Path(project_data['display_photo'])
+    with path.open(mode='rb') as f:
+        project.display_photo.save(content=f, name=path.name)
+    
     members = [User.objects.get_or_create(username=fake.name().lower())[0] for _ in range(2)]  # Create or get 2 random users
     for user in members:
         project.members.add(user)

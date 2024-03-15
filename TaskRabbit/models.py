@@ -5,7 +5,7 @@ class Project(models.Model):
   display_photo = models.ImageField(upload_to='project_photos/', blank=True)
   date_created = models.DateTimeField(auto_now_add=True)
   due_date = models.DateField(blank=True, null=True)
-  members = models.ManyToManyField('auth.User', related_name='projects')
+  members = models.ManyToManyField('auth.User', related_name='projects', blank=True)
   
   def is_completed(self):
     """

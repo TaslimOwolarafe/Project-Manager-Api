@@ -8,20 +8,61 @@ from .serializers import ProjectSerializer, TaskSerializer
 
 from drf_yasg.utils import swagger_auto_schema
 
+from rest_framework.serializers import Serializer
+from rest_framework import serializers
+
+class TaskCountSerializer(Serializer):
+    total_tasks = serializers.IntegerField(read_only=True)
+    completed_tasks = serializers.IntegerField(read_only=True)
+
+    def to_representation(self, instance):
+        """
+        Calculates and returns the task counts for a project.
+        """
+        data = super(TaskCountSerializer, self).to_representation(instance)
+        total_tasks = instance.tasks.count()
+        completed_tasks = instance.tasks.filter(complete=True).count()
+        data.update({
+            'total_tasks': total_tasks,
+            'completed_tasks': completed_tasks,
+        })
+        return data
+
+class ProjectMemberSerializer(Serializer):
+    username = serializers.CharField(read_only=True)
+    email = serializers.EmailField(read_only=True)
+
+class ProjectDetailSerializer(ProjectSerializer):
+    task_counts = TaskCountSerializer(read_only=True)
+    members = ProjectMemberSerializer(source='members.all', many=True, read_only=True)
+
+    class Meta(ProjectSerializer.Meta):
+        fields = ('id', 'members', 'title', 'display_photo', 
+                  'date_created', 'due_date', 'task_counts',)
+        
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data['task_counts'] = TaskCountSerializer(instance).data
+        return data
+        
 
 class ProjectViewSet(viewsets.ModelViewSet):
     """
     API endpoints for managing projects.
 
-    Requires authentication for all operations. Users can create, retrieve, update, and delete projects,
+    Users can create, retrieve, update, and delete projects,
     including assigning members and managing tasks (not implemented in this example).
     """
     queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+    serializer_class = ProjectDetailSerializer
 
     @swagger_auto_schema(
-        operation_description="List all projects.",
-        responses={200: ProjectSerializer(many=True)}
+        operation_description="""
+        Retrieve a list of all projects.
+
+        Optionally filter projects by completion status using the 'completed' query parameter (true/false).
+        """,
+        responses={200: ProjectDetailSerializer(many=True)}
     )
     def list(self, request, *args, **kwargs):
         """
