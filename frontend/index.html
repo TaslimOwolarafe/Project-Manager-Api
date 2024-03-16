@@ -14,15 +14,19 @@
 <body>
     <nav class="navbar">
         <div class="items">
-            <button class="home nav-item">Home</button>
-            <button class="nav-item">Projects</button>
-            <button class="nav-item">My Task</button>
-            <button class="nav-item">Team</button>
-            <button class="nav-item">File</button>
-            <button class="nav-item">Calender</button>
+            <button onclick="toggleActive(this)" class="home nav-item">Home</button>
+            <button onclick="toggleActive(this)" class="nav-item active"><i
+                    class="fa-solid fa-briefcase"></i>Projects</button>
+            <button onclick="toggleActive(this)" class="nav-item"><i class="fa-regular fa-clipboard"></i>My
+                Task</button>
+            <button onclick="toggleActive(this)" class="nav-item"><i class="fa-solid fa-user-group"></i>Team</button>
+            <button onclick="toggleActive(this)" class="nav-item"><i class="fa-regular fa-clone"></i>File</button>
+            <button onclick="toggleActive(this)" class="nav-item"><i
+                    class="fa-regular fa-calendar-days"></i>Calendar</button>
         </div>
         <div class="insights">
-            <button class="nav-item"></button>
+            <h5>Insights</h5>
+            <button class="nav-item"><i class="fa-solid fa-message"></i>Inbox</button>
         </div>
         <div class="profile">
             <div>
@@ -34,23 +38,27 @@
 
     <div class="content">
         <header class="top">
-            <div class="navbar-ground">
-                <div class="navbar-toggle">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+            <div class="toggle-title">
+                <div class="navbar-ground">
+                    <div class="navbar-toggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+                <div class="title">
+                    <h2>My Projects</h2>
                 </div>
             </div>
-            <div class="title">
-                <h2>My Projects</h2>
+
+            <div class="search-slider">
+                <div class="search">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search Project, Task, etc..">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="slider">
+                    <i class="fa-solid fa-sliders"></i>
+                </div>
             </div>
-            <div class="search">
-                <input type="text" id="search-input" class="search-input" placeholder="Search Project, Task, etc..">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
-            <div class="slider">
-                <i class="fa-solid fa-sliders"></i>
-            </div>
+
             <div class="add">
                 <i class="fa-solid fa-circle-plus"></i>
             </div>
@@ -60,8 +68,8 @@
             <div class="section-1">
                 <div class="menu">
                     <div class="view">
-                        <button class="list"><span class="view-icon"></span> List</button>
-                        <button class="board"><span class="view-icon"></span> Board</button>
+                        <button class="view-icon"><i class="fa-solid fa-rectangle-list"></i>List</button>
+                        <button class="view-icon" style="background-color: #fff;"><i class="fa-solid fa-border-all"></i>Board</button>
                     </div>
                     <div class="filter">
                         <button class="show" id="show">Show</button>
@@ -80,11 +88,11 @@
                     <table>
                         <thead class="project-heading">
                             <tr>
-                                <th>Task Name</th>
+                                <th class="task-name">Task Name</th>
                                 <th>Due In</th>
                                 <th>Tasks</th>
                                 <th>Status</th>
-                                <th>Members</th>
+                                <th class="members">Members</th>
                             </tr>
                         </thead>
                         <tbody id="project-tasks">
@@ -219,12 +227,13 @@
             <div class="section-2">
                 <div class="head-2">
                     <h3>Upcoming meeting</h3>
-                    <a href="#">see all</a>
+                    <a href="#">See all</a>
                 </div>
                 <div class="meeting-card">
                     <div class="meeting-description">
                         <h2>Meeting Name</h2>
-                        <p>The meeting aims to identify areas for improvement and ensure the design aligns with our user needs and business goals.</p>
+                        <p>The meeting aims to identify areas for improvement and ensure the design aligns with our user
+                            needs and business goals.</p>
                     </div>
                     <div class="meeting-detail">
                         <div class="period">
