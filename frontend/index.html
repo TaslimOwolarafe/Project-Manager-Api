@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Dashboard</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script src="https://kit.fontawesome.com/402a371c45.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="items">
+            <button class="home nav-item">Home</button>
+            <button class="nav-item">Projects</button>
+            <button class="nav-item">My Task</button>
+            <button class="nav-item">Team</button>
+            <button class="nav-item">File</button>
+            <button class="nav-item">Calender</button>
+        </div>
+        <div class="insights">
+            <button class="nav-item"></button>
+        </div>
+        <div class="profile">
+            <div>
+                <img src="" alt="">
+            </div>
+            <h3>Profile</h3>
+        </div>
+    </nav>
+
+    <div class="content">
+        <header class="top">
+            <div class="navbar-ground">
+                <div class="navbar-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+            <div class="title">
+                <h2>My Projects</h2>
+            </div>
+            <div class="search">
+                <input type="text" id="search-input" class="search-input" placeholder="Search Project, Task, etc..">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="slider">
+                <i class="fa-solid fa-sliders"></i>
+            </div>
+            <div class="add">
+                <i class="fa-solid fa-circle-plus"></i>
+            </div>
+        </header>
+
+        <div class="section-container">
+            <div class="section-1">
+                <div class="menu">
+                    <div class="view">
+                        <button class="list"><span class="view-icon"></span> List</button>
+                        <button class="board"><span class="view-icon"></span> Board</button>
+                    </div>
+                    <div class="filter">
+                        <button class="show" id="show">Show</button>
+                        <select id="status-filter" class="status-filter">
+                            <option value="">All</option>
+                            <option value="true">Completed</option>
+                            <option value="false">In Progress</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="project-count">
+
+                </div>
+                <div class="project-container">
+                    <table>
+                        <thead class="project-heading">
+                            <tr>
+                                <th>Task Name</th>
+                                <th>Due In</th>
+                                <th>Tasks</th>
+                                <th>Status</th>
+                                <th>Members</th>
+                            </tr>
+                        </thead>
+                        <tbody id="project-tasks">
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div>
+                                            <img src="" alt="">
+                                        </div>
+                                        <div>
+                                            <h4>World Widelife Redesign</h4>
+                                            <p>Oct 13, 2021</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button disabled="disabled">3d, 12m</button>
+                                </td>
+                                <td>
+                                    <div>
+                                        <h3>90/148</h3>
+                                        <p>Tasks</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <p>Progress</p>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <img src="" alt="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div>
+                                            <img src="" alt="">
+                                        </div>
+                                        <div>
+                                            <h4>World Widelife Redesign</h4>
+                                            <p>Oct 13, 2021</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button disabled="disabled">3d, 12m</button>
+                                </td>
+                                <td>
+                                    <div>
+                                        <h3>90/148</h3>
+                                        <p>Tasks</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <p>Progress</p>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <img src="" alt="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div>
+                                            <img src="" alt="">
+                                        </div>
+                                        <div>
+                                            <h4>World Widelife Redesign</h4>
+                                            <p>Oct 13, 2021</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button disabled="disabled">3d, 12m</button>
+                                </td>
+                                <td>
+                                    <div>
+                                        <h3>90/148</h3>
+                                        <p>Tasks</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <p>Progress</p>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <img src="" alt="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div>
+                                            <img src="" alt="">
+                                        </div>
+                                        <div>
+                                            <h4>World Widelife Redesign</h4>
+                                            <p>Oct 13, 2021</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button disabled="disabled">3d, 12m</button>
+                                </td>
+                                <td>
+                                    <div>
+                                        <h3>90/148</h3>
+                                        <p>Tasks</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <p>Progress</p>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <img src="" alt="">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="section-2">
+                <div class="head-2">
+                    <h3>Upcoming meeting</h3>
+                    <a href="#">see all</a>
+                </div>
+                <div class="meeting-card">
+                    <div class="meeting-description">
+                        <h2>Meeting Name</h2>
+                        <p>The meeting aims to identify areas for improvement and ensure the design aligns with our user needs and business goals.</p>
+                    </div>
+                    <div class="meeting-detail">
+                        <div class="period">
+                            <div class="time">
+                                <p>Time</p>
+                                <h4>12:00-12:30</h4>
+                            </div>
+                            <div class="duration">
+                                <p>Duration</p>
+                                <h4>30 min</h4>
+                            </div>
+                        </div>
+                        <div class="members">
+                            <p>Invited member</p>
+                        </div>
+                        <button>Join Meeting</button>
+                    </div>
+                </div>
+
+                <div class="task-card">
+                    <h3>Upcoming Task</h3>
+                    <div class="task-detail">
+                        <div class="task-title">
+                            <h6>Project Planning</h6>
+                            <button disabled="disabled" class="level">urgent</button>
+                        </div>
+                        <div class="members">
+
+                        </div>
+                        <p>management</p>
+                    </div>
+                    <div class="task-detail">
+                        <div class="task-title">
+                            <h6>Project Planning</h6>
+                            <button disabled="disabled" class="level">urgent</button>
+                        </div>
+                        <div class="members">
+
+                        </div>
+                        <p>management</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

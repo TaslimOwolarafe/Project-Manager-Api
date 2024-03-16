@@ -1,4 +1,4 @@
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, filters
 from rest_framework.response import Response
 
 from django.db.models import Q
@@ -55,6 +55,17 @@ class ProjectViewSet(viewsets.ModelViewSet):
     """
     queryset = Project.objects.all()
     serializer_class = ProjectDetailSerializer
+    
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['title',]  # Fields to search on
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search_term = self.request.query_params.get('search', '')
+
+        if search_term:
+            queryset = queryset.filter(Q(title__icontains=search_term))
+        return queryset
 
     @swagger_auto_schema(
         operation_description="""
@@ -73,13 +84,10 @@ class ProjectViewSet(viewsets.ModelViewSet):
         completed = request.query_params.get('completed', None)
         queryset = self.get_queryset()
         if completed is not None:
-            # Filter based on completed tasks
-            completed_tasks_q = Q(tasks__complete=True)
-            total_tasks_q = Q(tasks__id__in=self.tasks.filter(project=self.pk).values_list('id', flat=True))
             if completed == 'true':
-                queryset = queryset.filter(completed_tasks_q & total_tasks_q)
-            else:
-                queryset = queryset.exclude(completed_tasks_q & total_tasks_q)
+                queryset = [project for project in queryset if project.is_completed()]
+            elif completed == 'false':
+                queryset = [project for project in queryset if not project.is_completed() and project.tasks.filter(complete=True).count()>0]
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
