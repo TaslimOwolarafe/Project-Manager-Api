@@ -135,10 +135,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL= '/media/'
 MEDIA_ROOT = MEDIA_DIR
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5500',
-    'https://web-production-20fb.up.railway.app',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:5500',
+#     'https://web-production-20fb.up.railway.app',
+# ]
 
 CORS_ALLOW_HEADERS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
